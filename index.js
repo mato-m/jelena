@@ -13,7 +13,11 @@ const app = express();
 app.disable("x-powered-by");
 
 app.use(express.json());
-app.use(cors());
+app.use(
+  cors({
+    origin: "https://jelenavusurovic.me",
+  })
+);
 
 app.use("/_next", express.static(path.join(__dirname, ".next")));
 
