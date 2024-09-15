@@ -29,8 +29,8 @@ router.post("/", verifyToken, upload.single("image"), (req, res) => {
     return res.status(400).send({ status: 1, data: "Podaci nisu unešeni" });
   }
   const image_id = v4();
-  const query = `INSERT INTO Paintings (id, image_url, category_id) VALUES (?, ?, ?)`;
-  db.run(query, [image_id, image_url, category_id], function (err) {
+  const query = `INSERT INTO Paintings (id, image_url, category_id, date) VALUES (?, ?, ?,?)`;
+  db.run(query, [image_id, image_url, category_id, new Date()], function (err) {
     if (err) {
       return res
         .status(500)
@@ -41,7 +41,7 @@ router.post("/", verifyToken, upload.single("image"), (req, res) => {
 });
 
 router.get("/", (req, res) => {
-  const query = `SELECT * FROM Paintings`;
+  const query = `SELECT * FROM Paintings ORDER BY date DESC`;
   db.all(query, [], (err, rows) => {
     if (err) {
       return res

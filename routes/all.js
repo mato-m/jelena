@@ -5,7 +5,7 @@ const db = require("../db");
 router.get("/", async (req, res) => {
   const catQuery = `SELECT * FROM Categories`;
   const exQuery = `SELECT * FROM Exhibitions ORDER BY exhibition_date DESC`;
-  const paintQuery = `SELECT * FROM Paintings`;
+  const paintQuery = `SELECT * FROM Paintings ORDER BY date DESC`;
   const pressQuery = `SELECT * FROM Press ORDER BY published_date DESC`;
 
   db.all(catQuery, [], (err, catRows) => {
