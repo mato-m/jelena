@@ -41,7 +41,7 @@ const Press = ({ t, loggedIn, press, setPress }) => {
                       )
                     ) {
                       const request = await fetch(
-                        `http://localhost:3001/api/press/${artikal.id}`,
+                        `https://jelenavusurovic.me/api/press/${artikal.id}`,
                         {
                           method: "DELETE",
                           headers: {

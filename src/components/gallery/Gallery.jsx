@@ -70,7 +70,7 @@ const Gallery = ({
                     )
                   ) {
                     const request = await fetch(
-                      `http://localhost:3001/api/categories/${filter.id}`,
+                      `https://jelenavusurovic.me/api/categories/${filter.id}`,
                       {
                         method: "DELETE",
                         headers: {
@@ -137,7 +137,7 @@ const Gallery = ({
                       )
                     ) {
                       const request = await fetch(
-                        `http://localhost:3001/api/paintings/${artwork.id}`,
+                        `https://jelenavusurovic.me/api/paintings/${artwork.id}`,
                         {
                           method: "DELETE",
                           headers: {
@@ -178,7 +178,9 @@ const Gallery = ({
                 data-aos-duration="800"
                 width={300}
                 height={300}
-                src={"http://localhost:3001/paintings/" + artwork.image_url}
+                src={
+                  "https://jelenavusurovic.me/paintings/" + artwork.image_url
+                }
                 alt="Jelena Vušurović"
                 key={index}
               />
@@ -207,7 +209,7 @@ const Gallery = ({
           )
           .slice(0, numImagesToShow)
           .map((artwork) => ({
-            src: `/_next/image?url=http://localhost:3001/paintings/${artwork.image_url}&w=640&q=100`,
+            src: `/_next/image?url=https://jelenavusurovic.me/paintings/${artwork.image_url}&w=640&q=100`,
           }))}
         open={lightboxIndex >= 0}
         close={() => setLightboxIndex(-1)}

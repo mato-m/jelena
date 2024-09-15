@@ -23,7 +23,7 @@ const AddPress = () => {
       toast("Link nije u validnom formatu");
       return;
     }
-    const request = await fetch("http://localhost:3001/api/press", {
+    const request = await fetch("https://jelenavusurovic.me/api/press", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

@@ -10,7 +10,7 @@ const AddCategory = () => {
       toast("Potrebno je popuniti sva polja");
       return;
     }
-    const request = await fetch("http://localhost:3001/api/categories", {
+    const request = await fetch("https://jelenavusurovic.me/api/categories", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

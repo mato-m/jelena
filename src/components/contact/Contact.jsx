@@ -30,7 +30,7 @@ const Contact = ({ t }) => {
       if (!formData.poruka) {
         return toast("Niste unijeli poruku");
       }
-      const response = await fetch("http://localhost:3001/api/auth/mail", {
+      const response = await fetch("https://jelenavusurovic.me/api/auth/mail", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

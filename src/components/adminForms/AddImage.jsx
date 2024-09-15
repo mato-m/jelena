@@ -8,7 +8,7 @@ const AddImage = () => {
   const fileInput = useRef();
 
   const fetchCategories = async () => {
-    const response = await fetch("http://localhost:3001/api/categories");
+    const response = await fetch("https://jelenavusurovic.me/api/categories");
     const data = await response.json();
     setCategories(data.data);
     if (response.ok && data.length > 0) {
@@ -25,7 +25,7 @@ const AddImage = () => {
     const formData = new FormData();
     formData.append("image", image);
     formData.append("category_id", categoryID);
-    const request = await fetch("http://localhost:3001/api/paintings", {
+    const request = await fetch("https://jelenavusurovic.me/api/paintings", {
       method: "POST",
       headers: {
         Authorization: `Bearer ${localStorage.getItem("jelenaJWT")}`,

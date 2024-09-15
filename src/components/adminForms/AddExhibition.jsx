@@ -21,7 +21,7 @@ const AddExhibition = () => {
       toast("Potrebno je popuniti sva polja");
       return;
     }
-    const request = await fetch("http://localhost:3001/api/exhibitions", {
+    const request = await fetch("https://jelenavusurovic.me/api/exhibitions", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

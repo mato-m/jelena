@@ -34,7 +34,7 @@ const Exhibitions = ({ t, loggedIn, exhibitions, setExhibitions }) => {
                       )
                     ) {
                       const request = await fetch(
-                        `http://localhost:3001/api/exhibitions/${izlozba.id}`,
+                        `https://jelenavusurovic.me/api/exhibitions/${izlozba.id}`,
                         {
                           method: "DELETE",
                           headers: {

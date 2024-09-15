@@ -8,13 +8,16 @@ const Login = ({ setLoggedIn }) => {
   const handleLogin = async (event) => {
     event.preventDefault();
     try {
-      const response = await fetch("http://localhost:3001/api/auth/login", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({ username, password }),
-      });
+      const response = await fetch(
+        "https://jelenavusurovic.me/api/auth/login",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({ username, password }),
+        }
+      );
       if (response.ok) {
         const data = await response.json();
         if (data.auth === true) localStorage.setItem("jelenaJWT", data.token);

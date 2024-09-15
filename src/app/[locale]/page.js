@@ -3,7 +3,7 @@ export const dynamic = "force-dynamic";
 
 export default async function Page({ params }) {
   const { locale } = params;
-  const response = await fetch("http://localhost:3001/api/all", {
+  const response = await fetch("https://jelenavusurovic.me/api/all", {
     cache: "no-cache",
   });
 
