@@ -22,7 +22,7 @@ app.use("/api/press", require("./routes/press"));
 app.use("/api/exhibitions", require("./routes/exhibitions"));
 app.use("/api/auth", require("./routes/auth"));
 app.use("/api/all", require("./routes/all"));
-
+app.disable("x-powered-by");
 nextApp.prepare().then(() => {
   app.get("*", (req, res) => {
     return handle(req, res);
