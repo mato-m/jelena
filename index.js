@@ -15,7 +15,9 @@ app.disable("x-powered-by");
 app.use(express.json());
 app.use(
   cors({
-    origin: "*",
+    origin: "https://jelenavusurovic.me",
+    methods: "GET,POST,PUT,DELETE",
+    credentials: true,
   })
 );
 
