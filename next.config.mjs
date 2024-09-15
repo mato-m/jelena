@@ -4,7 +4,14 @@ const withNextIntl = createNextIntlPlugin();
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  images: { domains: ["localhost"] },
+  images: {
+    remotePatterns: [
+      {
+        protocol: "https",
+        hostname: "jelenavusurovic.me",
+      },
+    ],
+  },
 };
 
 export default withNextIntl(nextConfig);
