@@ -178,9 +178,7 @@ const Gallery = ({
                 data-aos-duration="800"
                 width={300}
                 height={300}
-                src={
-                  "https://jelenavusurovic.me/paintings/" + artwork.image_url
-                }
+                src={"/paintings/" + artwork.image_url}
                 alt="Jelena Vušurović"
                 key={index}
               />
@@ -209,7 +207,7 @@ const Gallery = ({
           )
           .slice(0, numImagesToShow)
           .map((artwork) => ({
-            src: `/_next/image?url=https://jelenavusurovic.me/paintings/${artwork.image_url}&w=640&q=100`,
+            src: `/paintings/${artwork.image_url}&w=640&q=100`,
           }))}
         open={lightboxIndex >= 0}
         close={() => setLightboxIndex(-1)}
