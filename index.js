@@ -10,6 +10,7 @@ const nextApp = next({ dev });
 const handle = nextApp.getRequestHandler();
 
 const app = express();
+app.disable("x-powered-by");
 
 app.use(express.json());
 app.use(cors());
@@ -22,7 +23,6 @@ app.use("/api/press", require("./routes/press"));
 app.use("/api/exhibitions", require("./routes/exhibitions"));
 app.use("/api/auth", require("./routes/auth"));
 app.use("/api/all", require("./routes/all"));
-app.disable("x-powered-by");
 nextApp.prepare().then(() => {
   app.get("*", (req, res) => {
     return handle(req, res);
