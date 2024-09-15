@@ -207,7 +207,7 @@ const Gallery = ({
           )
           .slice(0, numImagesToShow)
           .map((artwork) => ({
-            src: `/paintings/${artwork.image_url}&w=640&q=100`,
+            src: `/paintings/${artwork.image_url}`,
           }))}
         open={lightboxIndex >= 0}
         close={() => setLightboxIndex(-1)}
