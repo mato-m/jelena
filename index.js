@@ -16,7 +16,7 @@ app.use(express.json());
 app.use(cors());
 
 app.use("/_next", express.static(path.join(__dirname, ".next")));
-
+app.use("/public", express.static(path.join(__dirname, "public")));
 app.use("/api/categories", require("./routes/categories"));
 app.use("/api/paintings", require("./routes/paintings"));
 app.use("/api/press", require("./routes/press"));
