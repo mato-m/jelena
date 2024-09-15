@@ -172,8 +172,8 @@ const Gallery = ({
                   size={36}
                 />
               )}
-              <Image
-                quality={50}
+              <img
+                loading="lazy"
                 data-aos="fade-up"
                 data-aos-duration="800"
                 width={300}
