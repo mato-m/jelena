@@ -2,16 +2,22 @@ import { Prata } from "next/font/google";
 import "./globals.css";
 import { NextIntlClientProvider } from "next-intl";
 import { getLocale, getMessages } from "next-intl/server";
-import Head from "next/head";
 
 const prata = Prata({ subsets: ["latin"], weight: ["400"] });
+
+export const viewport = {
+  initialScale: 1,
+  userScalable: "no",
+  themeColor: "#e9e9e9",
+  maximumScale: 1,
+};
 
 export default async function LocaleLayout({ children }) {
   const messages = await getMessages();
   const locale = await getLocale();
   return (
     <html lang={locale}>
-      <Head>
+      <head>
         <title>
           {locale == "sr"
             ? "Jelena Vušurović | Akademska slikarka"
@@ -26,10 +32,6 @@ export default async function LocaleLayout({ children }) {
           }
         />
         <meta charSet="UTF-8" />
-        <meta
-          name="viewport"
-          content="width=device-width, minimum-scale=1.0, maximum-scale = 1.0, user-scalable = no"
-        ></meta>
         <link
           rel="apple-touch-icon"
           sizes="180x180"
@@ -57,7 +59,7 @@ export default async function LocaleLayout({ children }) {
         <meta name="theme-color" content="#e9e9e9"></meta>
         <link rel="icon" type="image/svg+xml" href="favicon.svg" />
         <link rel="icon" type="image/png" href="favicon.png" />
-      </Head>
+      </head>
       <body className={prata.className}>
         <NextIntlClientProvider messages={messages}>
           {children}
