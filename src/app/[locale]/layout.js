@@ -20,13 +20,36 @@ export default async function LocaleLayout({ children }) {
           name="description"
           content={
             locale == "sr"
-              ? "Jelena Vušurović je istaknuta akademska slikarka iz Cetinja, Crna Gora, čiji jedinstveni umjetnički stil ostavlja dubok uticaj na lokalnom i globalnom nivou. Kroz više od 13 samostalnih i preko 100 kolektivnih izložbi, Jelena je uspjela da svojom umjetnošću dopre do publike širom svijeta."
-              : "Jelena Vušurović is a prominent academic painter from Cetinje, Montenegro, whose unique artistic style leaves a deep impact on the local and global level. Through more than 13 independent and over 100 collective exhibitions, Jelena managed to reach audiences all over the world with her art."
+              ? "Jelena Vušurović je istaknuta akademska slikarka sa Cetinja, čiji jedinstveni umjetnički stil ostavlja dubok uticaj na lokalnom i globalnom nivou."
+              : "Jelena Vušurović is a prominent academic painter from Cetinje, whose unique artistic style leaves a deep impact on the local and global level."
           }
         />
         <meta charSet="UTF-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <meta name="theme-color" content="#e9e9e9" />
+        <link
+          rel="apple-touch-icon"
+          sizes="180x180"
+          href="/apple-touch-icon.png"
+        ></link>
+        <link
+          rel="icon"
+          type="image/png"
+          sizes="32x32"
+          href="/favicon-32x32.png"
+        ></link>
+        <link
+          rel="icon"
+          type="image/png"
+          sizes="16x16"
+          href="/favicon-16x16.png"
+        ></link>
+        <link rel="manifest" href="/site.webmanifest"></link>
+        <link
+          rel="mask-icon"
+          href="/safari-pinned-tab.svg"
+          color="#222222"
+        ></link>
+        <meta name="msapplication-TileColor" content="#e9e9e9"></meta>
+        <meta name="theme-color" content="#e9e9e9"></meta>
         <link rel="icon" type="image/svg+xml" href="favicon.svg" />
         <link rel="icon" type="image/png" href="favicon.png" />
       </head>
