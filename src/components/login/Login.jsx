@@ -24,7 +24,6 @@ const Login = ({ setLoggedIn }) => {
         setLoggedIn(true);
       } else throw new Error("Login failed");
     } catch (error) {
-      alert(error);
       toast("Greška pri prijavi");
     }
   };

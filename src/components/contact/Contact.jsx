@@ -44,7 +44,6 @@ const Contact = ({ t }) => {
         toast(data.data);
       }
     } catch (error) {
-      alert(error);
       toast("Greška pri slanju poruke");
     }
   };
