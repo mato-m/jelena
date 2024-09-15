@@ -1,0 +1,71 @@
+.pressWrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 16px;
+}
+.pressLink {
+  padding-bottom: 6px;
+  border-bottom: 1px solid #ccc;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  text-decoration: none;
+  width: 100%;
+  gap: 32px;
+  transition: 0.3s ease-in-out;
+}
+.pressLink:hover {
+  color: #222222;
+  border-bottom: solid #222222 1px;
+}
+.pressLink > span {
+  color: #999999;
+  display: flex;
+  flex-wrap: nowrap;
+}
+
+.pressCardRight {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.pressNaslov,
+.pressIzvor {
+  text-align: right;
+  width: 100%;
+}
+.pressNaslov {
+  font-size: 16px;
+  color: #222222;
+}
+.pressIzvor,
+.pressLink > span {
+  font-size: 14px;
+  color: #999999;
+}
+
+.pressNaslov > svg {
+  margin-left: 16px;
+  vertical-align: middle;
+}
+
+.loadMoreBtn {
+  background-color: #e9e9e9;
+  color: #222222;
+  padding: 8px 16px;
+  border: solid #222222 1px;
+
+  transition: 0.3s ease-in-out;
+  margin-top: 16px;
+  font-family: inherit;
+  min-width: 120px;
+  font-size: 14px;
+}
+.loadMoreBtn:hover {
+  background-color: #222222;
+  color: #e9e9e9;
+  transform: scale(0.96) translateY(2px);
+}

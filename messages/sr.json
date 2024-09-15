@@ -1,0 +1,40 @@
+{
+  "Homepage": {
+    "home": "Početna stranica",
+    "notFound": "Stranica nije pronađena",
+    "lang": "sr",
+    "switchLang": "English",
+    "link1": "Galerija",
+    "link2": "O Jeleni",
+    "link3": "Izložbe",
+    "link4": "Medijski članci",
+    "link5": "Kontakt",
+    "all": "Sve",
+    "mainSubtitle": "Akademska slikarka",
+
+    "moreBtn": "Pogledaj još",
+
+    "aboutTitle1": "Početak",
+    "aboutText1": "Jelena Vušurović je akademska slikarka koja živi i radi na Cetinju, prijestonici Crne Gore. Već od malih nogu se isticala njena kreativnost i talenat za likovnu umjetnost. Jelena je svoje osnovne studije završila na Fakultetu likovnih umjetnosti na Cetinju. Osnovne studije je završila na odsjeku grafika, u klasi profesorice mr Vesne Bošković. Jelena je diplomirala slikarstvo u klasi profesora Branislava Sekulića, odakle kreće njena karijera akademskog slikara.",
+
+    "aboutTitle2": "Profesionalna karijera",
+    "aboutText2": "Nakon završenih osnovnih studija, Jelena je odlučila da nastavi svoje obrazovanje i usavršavanje na magistarskim studijama. Magistarske studije je Jelena završila na Nezavisnom univerzitetu NUBL u Banja Luci, na odsjeku Slikarstvo i tehnoogija u klasi mr Jelene Rubil. Jelena je do sada imala više od 13 samostalnih i preko 100 kolektivnih izložbi u Crnoj Gori, kao i širom svijeta.",
+
+    "aboutTitle3": "Jelenin doprinos",
+    "aboutText3": "Jelena je člananica i koordinatorka Udruženja studenata Akademije na Cetinju. Ona je takođe i jedan od vodećih koordinatora i direktora akademika Bosne i Hercegovine, vodeća je članica i organizatorka velikih kolonija Saveza akademskih slikara. Jelena je svojim radom i zalaganjem doprinijela umjetničkom i akademskom svijetu Crne Gore, kao i šire. U Bosnu i Hercegovinu je dovela više od 200 eminentnih umjetnika iz cijelog svijeta. Jelena takođe ima svoju školu slikanja i crtanja na Cetinju, gdje prenosi svoje znanje i iskustvo i priprema đake za akademiju i srednju školu, kao i sve one koji žele da se bave likovnom umjetnošću. Crnogorsku javnost je zadivio njen potez kada je novac od prodaje svoje dvije slike donirala Turskoj i Siriji, koje su 2023. godine pogodili razorni zemljotresi.",
+
+    "aboutTitle4": "Umjetničko izražavanje",
+    "aboutText4": "U Jeleninom radu posebno je zanimljiv i čest motiv bika, gdje Jelena istražuje primitivnu suštinu sirove snage i otpornosti. Kroz svoje umjetničko djelo, ona nas izaziva da ponovo otkrijemo našu unutrašnju snagu, ponos i otpornost pred izazovima života, pozivajući nas da izronimo kao pobjednici i pratimo svjetlost sa nepokolebljivom energijom.",
+
+    "aboutTitle5": "Porodica",
+    "aboutText5": "Jelenina najveća motivacija i snaga dolazi od njene porodice, koja je njen najveći uspjeh, oslonac i podrška. Jelena je majka dvoje djece, sina Davida i ćerke Sare, koji su takođe veoma kreativni i talentovani za umjetnost. David i Sara su takođe krenuli njenim stopama u svijet likovne umjetnosti. David je svoju kreativnost usmjerio ka vajarstvu, dok je Sara više zainteresovana za slikanje.",
+    "contactText": "Ukoliko želite da stupite u kontakt sa Jelenom, to možete da uradite popunjavanjem kontakt forme ispod, putem email-a, telefona ili Instagrama.",
+    "contactName": "Ime",
+    "contactMsg": "Poruka",
+    "contactBtn": "Pošalji",
+    "contactSuccess": "Poruka je uspješno poslata. Hvala Vam na interesovanju.",
+    "contactError": "Došlo je do greške prilikom slanja poruke. Molimo pokušajte ponovo.",
+    "footerCopy": "Sva prava zadržana",
+    "manager": "menadžer slikara"
+  }
+}

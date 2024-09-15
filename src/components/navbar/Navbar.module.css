@@ -1,0 +1,94 @@
+.navMain {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 9;
+  transition: 0.3s ease-in-out;
+  backdrop-filter: blur(4px);
+  border-bottom: solid transparent 1px;
+  background-color: #e9e9e9;
+}
+.navMain.hidden {
+  transform: translateY(-82px);
+  opacity: 0;
+  visibility: hidden;
+}
+.navMain > div > a,
+.navLogo {
+  height: 100%;
+}
+.navLogo {
+  transition: 0.3s ease-in-out;
+  filter: invert(0);
+}
+.navMain > div {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 80px;
+}
+.navLinks {
+  display: flex;
+  gap: 16px;
+  position: absolute;
+  top: 80px;
+  left: 0;
+  height: 0px;
+  width: 100%;
+  flex-direction: column;
+  background: #e9e9e9;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  transition: 0.3s ease-in-out;
+  opacity: 0;
+  visibility: hidden;
+}
+
+.navLinks > a,
+.navLinks > span {
+  text-decoration: none;
+  color: #222222;
+  font-size: 16px;
+  transition: color 0.3s cubic-bezier(0.455, 0.03, 0.515, 0.955);
+  display: flex;
+  flex-grow: 1;
+  width: 100%;
+  text-align: center;
+  justify-content: center;
+  align-items: center;
+}
+.navLinks.menuOpen {
+  height: calc(100dvh - 80px);
+  opacity: 1;
+  visibility: visible;
+}
+@media screen and (min-width: 768px) {
+  .menuIcon {
+    display: none;
+  }
+  .navMain {
+    background-color: transparent;
+  }
+  .navLogo {
+    filter: invert(1);
+  }
+  .navLinks {
+    position: relative;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: auto;
+    flex-direction: row;
+    gap: 16px;
+    background: none;
+    opacity: 1;
+    visibility: visible;
+  }
+  .navLinks > a,
+  .navLinks > span {
+    width: unset;
+    color: #e9e9e9;
+  }
+}
