@@ -21,7 +21,6 @@ const Contact = ({ t }) => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      // validate each field
       if (!formData.ime) {
         return toast("Niste unijeli ime");
       }
@@ -45,6 +44,7 @@ const Contact = ({ t }) => {
         toast(data.data);
       }
     } catch (error) {
+      alert(error);
       toast("Greška pri slanju poruke");
     }
   };
