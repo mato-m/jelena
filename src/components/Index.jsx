@@ -41,7 +41,7 @@ const Index = ({
   return loading ? (
     <div
       style={{
-        height: "100vh",
+        height: "100svh",
         display: "flex",
         justifyContent: "center",
         alignItems: "center",
