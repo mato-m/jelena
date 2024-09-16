@@ -84,7 +84,7 @@ const Index = ({
         exhibitions={exhibitions}
         setExhibitions={setExhibitions}
       />
-      <Press loggedIn={loggedIn} t={t} press={press} />
+      <Press loggedIn={loggedIn} t={t} press={press} setPress={setPress} />
       <Contact t={t} />
       <Footer t={t} />
       <ScrollToTop1 />

@@ -11,6 +11,7 @@ const AddImage = () => {
     const response = await fetch("https://jelenavusurovic.me/api/categories");
     const data = await response.json();
     setCategories(data.data);
+    setCategoryID(data.data[0].id);
     if (response.ok && data.length > 0) {
       setCategoryID(data[0].id);
     }
@@ -58,8 +59,7 @@ const AddImage = () => {
         type="file"
         onChange={(e) => setImage(e.target.files[0])}
         ref={fileInput}
-      />{" "}
-      {/* Add ref here */}
+      />
       <button type="submit">Dodaj</button>
     </form>
   ) : (
