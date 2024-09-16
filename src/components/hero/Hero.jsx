@@ -5,9 +5,18 @@ const Hero = ({ t }) => {
   return (
     <div className={styles.heroMain} id="top">
       <div className={styles.heroOverlay}>
-        <img src="./navlogo.svg" alt="Jelena" width={250} height={250} />
-        <h1>Jelena Vušurović</h1>
-        <h2>{t("mainSubtitle")}</h2>
+        <img
+          data-aos="fade-up"
+          data-aos-duration="800"
+          src="./navlogo.svg"
+          alt="Jelena"
+        />
+        <h1 data-aos="fade-up" data-aos-duration="800" data-aos-delay="200">
+          Jelena Vušurović
+        </h1>
+        <h2 data-aos="fade-up" data-aos-duration="800" data-aos-delay="400">
+          {t("mainSubtitle")}
+        </h2>
       </div>
     </div>
   );
