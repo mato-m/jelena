@@ -8,7 +8,7 @@ const Hero = ({ t }) => {
         <Image
           quality={50}
           data-aos="fade-up"
-          data-aos-duration="800"
+          data-aos-duration="300"
           src="./navlogo.svg"
           alt="Jelena"
           width={300}
