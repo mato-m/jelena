@@ -1,12 +1,6 @@
 import { Prata } from "next/font/google";
 import "../[locale]/globals.css";
 const prata = Prata({ subsets: ["latin"], weight: ["400"] });
-export const viewport = {
-  initialScale: 1,
-  userScalable: "no",
-  themeColor: "#e9e9e9",
-  maximumScale: 1,
-};
 
 export default function RootLayout({ children }) {
   return (
