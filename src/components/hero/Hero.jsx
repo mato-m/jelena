@@ -5,13 +5,7 @@ const Hero = ({ t }) => {
   return (
     <div className={styles.heroMain} id="top">
       <div className={styles.heroOverlay}>
-        <Image
-          quality={50}
-          src="./navlogo.svg"
-          alt="Jelena"
-          width={300}
-          height={300}
-        />
+        <img src="./navlogo.svg" alt="Jelena" width={250} height={250} />
         <h1>Jelena Vušurović</h1>
         <h2>{t("mainSubtitle")}</h2>
       </div>
