@@ -20,25 +20,39 @@ const storage = multer.diskStorage({
     cb(null, uniqueSuffix);
   },
 });
-const upload = multer({ storage: storage }).single("image");
 
-router.post("/", verifyToken, upload.single("image"), (req, res) => {
-  const { category_id } = req.body;
-  const image_url = req.file.filename;
-  if (!category_id || !image_url) {
-    return res.status(400).send({ status: 1, data: "Podaci nisu unešeni" });
-  }
-  const image_id = v4();
-  const query = `INSERT INTO Paintings (id, image_url, category_id, date) VALUES (?, ?, ?,?)`;
-  db.run(query, [image_id, image_url, category_id, new Date()], function (err) {
-    if (err) {
-      return res
-        .status(500)
-        .send({ status: 1, data: "Greška pri dodavanju slike" });
+router.post(
+  "/",
+  verifyToken,
+  multer({ storage }).single("image"),
+  (req, res) => {
+    if (req.file) {
+      console.log("File uploaded successfully");
+    } else {
+      console.log("File upload failed");
+      console.log(req.fileValidationError);
     }
-    res.status(200).send({ status: 0, data: "Slika dodata" });
-  });
-});
+    const { category_id } = req.body;
+    const image_url = req.file.filename;
+    if (!category_id || !image_url) {
+      return res.status(400).send({ status: 1, data: "Podaci nisu unešeni" });
+    }
+    const image_id = v4();
+    const query = `INSERT INTO Paintings (id, image_url, category_id, date) VALUES (?, ?, ?,?)`;
+    db.run(
+      query,
+      [image_id, image_url, category_id, new Date()],
+      function (err) {
+        if (err) {
+          return res
+            .status(500)
+            .send({ status: 1, data: "Greška pri dodavanju slike" });
+        }
+        res.status(200).send({ status: 0, data: "Slika dodata" });
+      }
+    );
+  }
+);
 
 router.get("/", (req, res) => {
   const query = `SELECT * FROM Paintings ORDER BY date DESC`;
