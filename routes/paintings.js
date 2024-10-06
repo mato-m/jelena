@@ -7,6 +7,7 @@ const { v4 } = require("uuid");
 const verifyToken = require("../middleware/auth");
 const fs = require("fs");
 
+const uploadDir = path.join(__dirname, "../public", "paintings");
 const storage = multer.diskStorage({
   destination: function (req, file, cb) {
     cb(null, uploadDir); // Use the correct directory path
