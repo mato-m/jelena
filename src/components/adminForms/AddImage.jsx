@@ -19,26 +19,30 @@ const AddImage = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    if (!image || !categoryID) {
-      toast("Potrebno je popuniti sva polja");
-      return;
-    }
-    const formData = new FormData();
-    formData.append("image", image);
-    formData.append("category_id", categoryID);
-    const request = await fetch("https://jelenavusurovic.me/api/paintings", {
-      method: "POST",
-      headers: {
-        Authorization: `Bearer ${localStorage.getItem("jelenaJWT")}`,
-      },
-      body: formData,
-    });
-    if (request.ok) {
-      toast("Slika uspješno dodata");
-      setImage(null);
-      fileInput.current.value = "";
-    } else {
-      toast("Greška prilikom dodavanja slike");
+    try {
+      if (!image || !categoryID) {
+        toast("Potrebno je popuniti sva polja");
+        return;
+      }
+      const formData = new FormData();
+      formData.append("image", image);
+      formData.append("category_id", categoryID);
+      const request = await fetch("https://jelenavusurovic.me/api/paintings", {
+        method: "POST",
+        headers: {
+          Authorization: `Bearer ${localStorage.getItem("jelenaJWT")}`,
+        },
+        body: formData,
+      });
+      if (request.ok) {
+        toast("Slika uspješno dodata");
+        setImage(null);
+        fileInput.current.value = "";
+      } else {
+        toast("Greška prilikom dodavanja slike");
+      }
+    } catch (e) {
+      console.error(e);
     }
   };
 
@@ -57,7 +61,10 @@ const AddImage = () => {
       </select>
       <input
         type="file"
-        onChange={(e) => setImage(e.target.files[0])}
+        accept="image/*"
+        onChange={(e) => {
+          setImage(e.target.files[0]);
+        }}
         ref={fileInput}
       />
       <button type="submit">Dodaj</button>

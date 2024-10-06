@@ -23,7 +23,7 @@ const storage = multer.diskStorage({
 router.post(
   "/",
   verifyToken,
-  multer({ storage }).single("image"),
+  multer({ storage, limits: { fileSize: 5 * 1024 * 1024 } }).single("image"),
   (req, res) => {
     if (req.file) {
       console.log("File uploaded successfully");
@@ -43,6 +43,7 @@ router.post(
       [image_id, image_url, category_id, new Date()],
       function (err) {
         if (err) {
+          console.log(err);
           return res
             .status(500)
             .send({ status: 1, data: "Greška pri dodavanju slike" });
