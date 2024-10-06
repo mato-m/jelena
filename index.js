@@ -13,7 +13,13 @@ const app = express();
 app.disable("x-powered-by");
 
 app.use(express.json());
-app.use(cors());
+app.use(
+  cors({
+    origin: "*", // Allow all origins for now
+    methods: "GET,POST", // Ensure POST requests are allowed
+    allowedHeaders: "Content-Type,Authorization", // Allow necessary headers
+  })
+);
 
 app.use("/_next", express.static(path.join(__dirname, ".next")));
 app.use("/", express.static(path.join(__dirname, "public")));
