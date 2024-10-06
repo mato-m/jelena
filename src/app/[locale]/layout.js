@@ -8,6 +8,16 @@ const prata = Prata({ subsets: ["latin"], weight: ["400"] });
 export default async function LocaleLayout({ children }) {
   const messages = await getMessages();
   const locale = await getLocale();
+  const structuredData = {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    name: "Jelena Vušurović",
+    jobTitle: "Academic painter",
+    description:
+      "Jelena Vušurović je istaknuta akademska slikarka sa Cetinja, čiji jedinstveni umjetnički stil ostavlja dubok uticaj na lokalnom i globalnom nivou.",
+    url: "https://www.jelenavusurovic.me",
+  };
+
   return (
     <html lang={locale}>
       <head>
@@ -57,6 +67,10 @@ export default async function LocaleLayout({ children }) {
         <NextIntlClientProvider messages={messages}>
           {children}
         </NextIntlClientProvider>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
+        />
       </body>
     </html>
   );
