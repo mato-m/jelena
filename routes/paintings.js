@@ -9,7 +9,7 @@ const fs = require("fs");
 
 const storage = multer.diskStorage({
   destination: function (req, file, cb) {
-    cb(null, "/public/paintings/");
+    cb(null, path.join(__dirname, "/public/paintings/"));
   },
   filename: function (req, file, cb) {
     const uniqueSuffix =
@@ -20,7 +20,6 @@ const storage = multer.diskStorage({
     cb(null, uniqueSuffix);
   },
 });
-
 router.post(
   "/",
   verifyToken,
