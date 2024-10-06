@@ -20,7 +20,7 @@ const storage = multer.diskStorage({
     cb(null, uniqueSuffix);
   },
 });
-const upload = multer({ storage: storage });
+const upload = multer({ storage: storage }).single("image");
 
 router.post("/", verifyToken, upload.single("image"), (req, res) => {
   const { category_id } = req.body;
