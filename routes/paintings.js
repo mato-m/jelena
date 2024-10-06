@@ -9,7 +9,7 @@ const fs = require("fs");
 
 const storage = multer.diskStorage({
   destination: function (req, file, cb) {
-    cb(null, path.join(__dirname, "/public/paintings/"));
+    cb(null, uploadDir); // Use the correct directory path
   },
   filename: function (req, file, cb) {
     const uniqueSuffix =
@@ -20,39 +20,53 @@ const storage = multer.diskStorage({
     cb(null, uniqueSuffix);
   },
 });
-router.post(
-  "/",
-  verifyToken,
-  multer({ storage, limits: { fileSize: 5 * 1024 * 1024 } }).single("image"),
-  (req, res) => {
-    if (req.file) {
-      console.log("File uploaded successfully");
-    } else {
-      console.log("File upload failed");
-      console.log(req.fileValidationError);
+
+const upload = multer({
+  storage,
+  limits: { fileSize: 5 * 1024 * 1024 }, // 5MB limit
+}).single("image");
+
+router.post("/", verifyToken, (req, res) => {
+  upload(req, res, (err) => {
+    if (err) {
+      // Multer file upload error
+      console.log("File upload error:", err);
+      return res
+        .status(400)
+        .send({ status: 1, data: "Greška prilikom učitavanja fajla." });
     }
+
+    if (!req.file) {
+      // No file uploaded
+      return res.status(400).send({ status: 1, data: "Fajl nije uploadovan." });
+    }
+
     const { category_id } = req.body;
     const image_url = req.file.filename;
+
     if (!category_id || !image_url) {
       return res.status(400).send({ status: 1, data: "Podaci nisu unešeni" });
     }
+
     const image_id = v4();
-    const query = `INSERT INTO Paintings (id, image_url, category_id, date) VALUES (?, ?, ?,?)`;
+    const query = `INSERT INTO Paintings (id, image_url, category_id, date) VALUES (?, ?, ?, ?)`;
+
     db.run(
       query,
       [image_id, image_url, category_id, new Date()],
       function (err) {
         if (err) {
-          console.log(err);
+          console.log("Database error:", err);
           return res
             .status(500)
             .send({ status: 1, data: "Greška pri dodavanju slike" });
         }
-        res.status(200).send({ status: 0, data: "Slika dodata" });
+
+        res.status(200).send({ status: 0, data: "Slika uspješno dodata" });
       }
     );
-  }
-);
+  });
+});
 
 router.get("/", (req, res) => {
   const query = `SELECT * FROM Paintings ORDER BY date DESC`;
