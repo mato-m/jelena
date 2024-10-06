@@ -39,11 +39,10 @@ const AddImage = () => {
         setImage(null);
         fileInput.current.value = "";
       } else {
-        alert(request.status);
-        toast(request);
+        toast("Greška prilikom dodavanja slike");
       }
     } catch (e) {
-      alert(e);
+      console.error(e);
     }
   };
 
@@ -62,9 +61,9 @@ const AddImage = () => {
       </select>
       <input
         type="file"
+        accept="image/*"
         onChange={(e) => {
-          alert(e.target.files[0]);
-          setImage(URL.createObjectURL(e.target.files[0]));
+          setImage(e.target.files[0]);
         }}
         ref={fileInput}
       />
