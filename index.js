@@ -16,7 +16,7 @@ app.use(express.json());
 app.use(
   cors({
     origin: "*", // Allow all origins for now
-    methods: "GET,POST", // Ensure POST requests are allowed
+    methods: "GET,POST,DELETE", // Ensure POST requests are allowed
     allowedHeaders: "Content-Type,Authorization", // Allow necessary headers
   })
 );
