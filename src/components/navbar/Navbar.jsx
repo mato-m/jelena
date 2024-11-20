@@ -5,50 +5,28 @@ import Link from "next/link";
 import Image from "next/image";
 import { SlClose, SlMenu } from "react-icons/sl";
 import { lock, unlock } from "tua-body-scroll-lock";
-import { useLocale } from "next-intl";
-const Navbar = ({ t, loggedIn }) => {
-  const locale = useLocale();
-  const [scrolled, setScrolled] = useState(false);
-  const [menuOpen, setMenuOpen] = useState(false);
-  const [prevScrollPos, setPrevScrollPos] = useState(0);
-  const [visible, setVisible] = useState(true);
+import { useLocale, useTranslations } from "next-intl";
+
+const Navbar = () => {
+  const t = useTranslations("Homepage");
+  const [loggedIn, setLoggedIn] = useState(false);
   useEffect(() => {
-    setScrolled(window.scrollY > 100);
+    if (localStorage.getItem("jelenaJWT")) {
+      setLoggedIn(true);
+    }
   }, []);
-  const handleScroll = () => {
-    const currentScrollPos = window.scrollY;
-    const visible = prevScrollPos > currentScrollPos;
-
-    setPrevScrollPos(currentScrollPos);
-    setVisible(visible);
-    setScrolled(currentScrollPos > 100);
-  };
-
-  useEffect(() => {
-    window.addEventListener("scroll", handleScroll);
-    return () => {
-      window.removeEventListener("scroll", handleScroll);
-    };
-  }, [prevScrollPos, visible, scrolled]);
-
-  useEffect(() => {
+  const locale = useLocale();
+  const [menuOpen, setMenuOpen] = useState(false);
+  React.useEffect(() => {
     if (menuOpen) {
       lock();
     } else {
       unlock();
     }
   }, [menuOpen]);
-  let navbarClasses = [styles.navMain];
-  if (scrolled) {
-    navbarClasses.push("scrolled");
-  }
-
-  if (!visible && scrolled) {
-    navbarClasses.push(styles.hidden);
-  }
 
   return (
-    <nav className={navbarClasses.join(" ")}>
+    <nav className={styles.navMain}>
       <div className="container">
         <Link
           href="#"
@@ -82,12 +60,12 @@ const Navbar = ({ t, loggedIn }) => {
           onClick={() => setMenuOpen(false)}
           className={styles.navLinks + " " + (menuOpen ? styles.menuOpen : "")}
         >
-          <Link href="/#galerija">{t("link1")}</Link>
-          <Link href="/#o-jeleni">{t("link2")}</Link>
-          <Link href="/#izlozbe">{t("link3")}</Link>
-          <Link href="/#medijski-clanci">{t("link4")}</Link>
-          <Link href="/#kontakt">{t("link5")}</Link>
+          <Link href="#galerija">{t("link1")}</Link>
+          <Link href="#o-jeleni">{t("link2")}</Link>
+          <Link href="#izlozbe">{t("link3")}</Link>
+          <Link href="#medijski-clanci">{t("link4")}</Link>
           {loggedIn && <Link href="/admin">Admin</Link>}
+          <Link href="#kontakt">{t("link5")}</Link>
           <Link href={`/${locale === "en" ? "sr" : "en"}`}>
             {locale === "en" ? "Crnogorski" : "English"}
           </Link>

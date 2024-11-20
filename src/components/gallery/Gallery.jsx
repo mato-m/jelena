@@ -1,7 +1,6 @@
 "use client";
 import React, { useEffect, useState } from "react";
 import styles from "./Gallery.module.css";
-import Image from "next/image";
 import Lightbox from "yet-another-react-lightbox";
 import "yet-another-react-lightbox/styles.css";
 import Zoom from "yet-another-react-lightbox/plugins/zoom";
@@ -9,19 +8,22 @@ import Thumbnails from "yet-another-react-lightbox/plugins/thumbnails";
 import "yet-another-react-lightbox/plugins/thumbnails.css";
 import { SlTrash } from "react-icons/sl";
 import { toast } from "react-toastify";
-const Gallery = ({
-  t,
-  loggedIn,
-  setCategories,
-  setArtworks,
-  categories,
-  artworks,
-}) => {
+import { useRouter } from "next/navigation";
+import { useTranslations } from "next-intl";
+const Gallery = ({ categories, artworks }) => {
+  const t = useTranslations("Homepage");
+  const [loggedIn, setLoggedIn] = useState(false);
+  useEffect(() => {
+    if (localStorage.getItem("jelenaJWT")) {
+      setLoggedIn(true);
+    }
+  }, []);
+
   const [lightboxIndex, setLightboxIndex] = useState(-1);
   const [activeFilter, setActiveFilter] = useState("showAll");
   const [numImagesToShow, setNumImagesToShow] = useState(4);
   const imagesIncrement = 4;
-
+  const router = useRouter();
   const handleFilterClick = (filter) => {
     setNumImagesToShow(4);
     setActiveFilter(filter);
@@ -81,19 +83,19 @@ const Gallery = ({
                       }
                     );
                     if (request.ok) {
-                      setCategories((prevFilters) =>
-                        prevFilters.filter(
-                          (prevFilter) => prevFilter.id !== filter.id
-                        )
+                      categories.splice(
+                        categories.findIndex(
+                          (category) => category.id === filter.id
+                        ),
+                        1
                       );
                       if (activeFilter === filter.id) {
                         setActiveFilter("showAll");
                       }
-                      setArtworks((prevArtworks) =>
-                        prevArtworks.filter(
-                          (prevArtwork) => prevArtwork.category_id !== filter.id
-                        )
+                      artworks = artworks.filter(
+                        (artwork) => artwork.category_id !== filter
                       );
+                      router.refresh();
 
                       toast("Kategorija uspješno obrisana");
                     } else {
@@ -148,12 +150,11 @@ const Gallery = ({
                         }
                       );
                       if (request.ok) {
-                        setArtworks((prevArtworks) =>
-                          prevArtworks.filter(
-                            (prevArtwork) => prevArtwork.id !== artwork.id
-                          )
+                        artworks.splice(
+                          artworks.findIndex((art) => art.id === artwork.id),
+                          1
                         );
-
+                        router.refresh();
                         toast("Slika uspješno obrisana");
                       } else {
                         toast("Greška prilikom brisanja slike");
@@ -174,8 +175,6 @@ const Gallery = ({
               )}
               <img
                 loading="lazy"
-                data-aos="fade-up"
-                data-aos-duration="800"
                 width={300}
                 height={300}
                 src={"/paintings/" + artwork.image_url}

@@ -1,11 +1,13 @@
-"use client";
+"use server";
 import React from "react";
 import styles from "./Footer.module.css";
 import { SlEnvolope, SlPhone, SlSocialInstagram } from "react-icons/sl";
 import Link from "next/link";
 import Image from "next/image";
-import { useLocale } from "next-intl";
-const Footer = ({ t }) => {
+import { useLocale, useTranslations } from "next-intl";
+
+const Footer = () => {
+  const t = useTranslations("Homepage");
   const locale = useLocale();
   return (
     <div className={styles.footerMain}>

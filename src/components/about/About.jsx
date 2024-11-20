@@ -1,16 +1,13 @@
-"use client";
 import React from "react";
 import styles from "./About.module.css";
 import Image from "next/image";
-const About = ({ t }) => {
+import { useTranslations } from "next-intl";
+const About = () => {
+  const t = useTranslations("Homepage");
   return (
     <div className="container" id="o-jeleni">
       <h2>{t("link2")}</h2>
-      <div
-        className={styles.aboutRow}
-        data-aos="fade-up"
-        data-aos-duration="800"
-      >
+      <div className={styles.aboutRow}>
         <div className={styles.aboutImgWrapper}>
           <Image
             quality={100}
@@ -25,11 +22,7 @@ const About = ({ t }) => {
         <p className={styles.aboutText}>{t("aboutText1")}</p>
       </div>
 
-      <div
-        className={styles.aboutRow}
-        data-aos="fade-up"
-        data-aos-duration="800"
-      >
+      <div className={styles.aboutRow}>
         <div className={styles.aboutImgWrapper}>
           <Image
             quality={100}
@@ -44,11 +37,7 @@ const About = ({ t }) => {
         <p className={styles.aboutText}>{t("aboutText2")}</p>
       </div>
 
-      <div
-        className={styles.aboutRow}
-        data-aos="fade-up"
-        data-aos-duration="800"
-      >
+      <div className={styles.aboutRow}>
         <div className={styles.aboutImgWrapper}>
           <Image
             quality={100}
@@ -62,11 +51,7 @@ const About = ({ t }) => {
         </div>
         <p className={styles.aboutText}>{t("aboutText3")}</p>
       </div>
-      <div
-        className={styles.aboutRow}
-        data-aos="fade-up"
-        data-aos-duration="800"
-      >
+      <div className={styles.aboutRow}>
         <div className={styles.aboutImgWrapper}>
           <Image
             quality={100}
@@ -80,11 +65,7 @@ const About = ({ t }) => {
         </div>
         <p className={styles.aboutText}>{t("aboutText4")}</p>
       </div>
-      <div
-        className={styles.aboutRow}
-        data-aos="fade-up"
-        data-aos-duration="800"
-      >
+      <div className={styles.aboutRow}>
         <div className={styles.aboutImgWrapper}>
           <Image
             quality={100}

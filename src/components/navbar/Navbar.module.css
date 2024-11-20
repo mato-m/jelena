@@ -6,7 +6,7 @@
   z-index: 9;
   transition: 0.3s ease-in-out;
   backdrop-filter: blur(4px);
-  border-bottom: solid transparent 1px;
+  border-bottom: solid #ccc 1px;
   background-color: #e9e9e9;
 }
 .navMain.hidden {
@@ -68,12 +68,6 @@
   .menuIcon {
     display: none;
   }
-  .navMain {
-    background-color: transparent;
-  }
-  .navLogo {
-    filter: invert(1);
-  }
   .navLinks {
     position: relative;
     top: 0;
@@ -89,6 +83,5 @@
   .navLinks > a,
   .navLinks > span {
     width: unset;
-    color: #e9e9e9;
   }
 }

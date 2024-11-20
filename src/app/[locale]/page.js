@@ -1,11 +1,7 @@
 import Index from "@/components/Index";
-export const dynamic = "force-dynamic";
 
-export default async function Page({ params }) {
-  const { locale } = params;
-  const response = await fetch("https://jelenavusurovic.me/api/all", {
-    cache: "no-cache",
-  });
+export default async function Page() {
+  const response = await fetch("https://jelenavusurovic.me/api/all");
 
   if (!response.ok) {
     throw new Error("Failed to fetch data");

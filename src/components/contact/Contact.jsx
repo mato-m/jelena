@@ -1,9 +1,12 @@
+"use client";
 import React, { useState } from "react";
 import styles from "./Contact.module.css";
 import Link from "next/link";
 import { SlSocialInstagram, SlEnvolope, SlPhone } from "react-icons/sl";
 import { toast } from "react-toastify";
-const Contact = ({ t }) => {
+import { useTranslations } from "next-intl";
+const Contact = () => {
+  const t = useTranslations("Homepage");
   const [formData, setFormData] = useState({
     ime: "",
     email: "",
@@ -51,19 +54,8 @@ const Contact = ({ t }) => {
     <div className="container" id="kontakt">
       <h2>{t("link5")}</h2>
       <div className={styles.contactInfo}>
-        <p
-          className={styles.contactText}
-          data-aos="fade-up"
-          data-aos-duration="800"
-        >
-          {t("contactText")}
-        </p>
-        <form
-          onSubmit={handleSubmit}
-          className={styles.contactForm}
-          data-aos="fade-up"
-          data-aos-duration="800"
-        >
+        <p className={styles.contactText}>{t("contactText")}</p>
+        <form onSubmit={handleSubmit} className={styles.contactForm}>
           <input
             type="text"
             name="ime"
@@ -88,8 +80,6 @@ const Contact = ({ t }) => {
         </form>
         <div className={styles.contactSocials}>
           <Link
-            data-aos="fade-up"
-            data-aos-duration="800"
             target="_blank"
             href="https://www.instagram.com/jelena_vusurovic"
             className={styles.contactSocial}
@@ -98,19 +88,12 @@ const Contact = ({ t }) => {
           </Link>
 
           <Link
-            data-aos="fade-up"
-            data-aos-duration="800"
             href="mailto:info@jelenavusurovic.me"
             className={styles.contactSocial}
           >
             <SlEnvolope /> <span>info@jelenavusurovic.me</span>
           </Link>
-          <Link
-            data-aos="fade-up"
-            data-aos-duration="800"
-            href="tel:+38267653544"
-            className={styles.contactSocial}
-          >
+          <Link href="tel:+38267653544" className={styles.contactSocial}>
             <SlPhone />
             <span>+382 67 653 544</span>
           </Link>

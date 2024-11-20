@@ -1,15 +1,25 @@
 "use client";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import styles from "./Press.module.css";
 import Link from "next/link";
 import { SlLink, SlTrash } from "react-icons/sl";
 import { toast } from "react-toastify";
-const Press = ({ t, loggedIn, press, setPress }) => {
+import { useRouter } from "next/navigation";
+import { useTranslations } from "next-intl";
+const Press = ({ press }) => {
+  const [loggedIn, setLoggedIn] = useState(false);
+  useEffect(() => {
+    if (localStorage.getItem("jelenaJWT")) {
+      setLoggedIn(true);
+    }
+  }, []);
+
+  const t = useTranslations("Homepage");
   const [numArticlesToShow, setNumArticlesToShow] = useState(4);
   const handleLoadMoreClick = () => {
     setNumArticlesToShow((prevNumArticlesToShow) => prevNumArticlesToShow + 4);
   };
-
+  const router = useRouter();
   return (
     <div className="container" id="medijski-clanci">
       <h2>{t("link4")}</h2>
@@ -21,7 +31,7 @@ const Press = ({ t, loggedIn, press, setPress }) => {
             className={styles.pressLink}
             target="_blank"
           >
-            <span data-aos="fade-up" data-aos-duration="800">
+            <span>
               <SlLink color="#222222" style={{ marginRight: 8 }} />
               {new Date(artikal.published_date).toLocaleDateString("sr-RS", {
                 day: "2-digit",
@@ -52,11 +62,8 @@ const Press = ({ t, loggedIn, press, setPress }) => {
                         }
                       );
                       if (request.ok) {
-                        setPress((prevArtikli) =>
-                          prevArtikli.filter(
-                            (prevArtikal) => prevArtikal.id !== artikal.id
-                          )
-                        );
+                        press.splice(index, 1);
+                        router.refresh();
 
                         toast("Članak uspješno obrisan");
                       } else {
@@ -67,11 +74,7 @@ const Press = ({ t, loggedIn, press, setPress }) => {
                 />
               )}
             </span>
-            <div
-              data-aos="fade-up"
-              data-aos-duration="800"
-              className={styles.pressCardRight}
-            >
+            <div className={styles.pressCardRight}>
               <span className={styles.pressNaslov}>
                 {t("lang") === "sr" ? artikal.title_sr : artikal.title_en}
               </span>

@@ -1,10 +1,21 @@
 "use client";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import styles from "./Exhibitions.module.css";
 import { SlTrash } from "react-icons/sl";
 import { toast } from "react-toastify";
-const Exhibitions = ({ t, loggedIn, exhibitions, setExhibitions }) => {
+import { useRouter } from "next/navigation";
+import { useTranslations } from "next-intl";
+const Exhibitions = ({ exhibitions }) => {
+  const [loggedIn, setLoggedIn] = useState(false);
+  useEffect(() => {
+    if (localStorage.getItem("jelenaJWT")) {
+      setLoggedIn(true);
+    }
+  }, []);
+
+  const t = useTranslations("Homepage");
   const [numExhibitionsToShow, setNumExhibitionsToShow] = useState(4);
+  const router = useRouter();
 
   const handleLoadMoreClick = () => {
     setNumExhibitionsToShow(
@@ -17,7 +28,7 @@ const Exhibitions = ({ t, loggedIn, exhibitions, setExhibitions }) => {
       <div className={styles.izlozbeWrapper}>
         {exhibitions?.slice(0, numExhibitionsToShow).map((izlozba, index) => (
           <div key={index} className={styles.izlozbaWrapper}>
-            <span data-aos="fade-up" data-aos-duration="800">
+            <span>
               {new Date(izlozba.exhibition_date).toLocaleDateString("sr-RS", {
                 day: "2-digit",
                 month: "2-digit",
@@ -45,11 +56,8 @@ const Exhibitions = ({ t, loggedIn, exhibitions, setExhibitions }) => {
                         }
                       );
                       if (request.ok) {
-                        setExhibitions((prevIzlozbe) =>
-                          prevIzlozbe?.filter(
-                            (prevIzlozba) => prevIzlozba.id !== izlozba.id
-                          )
-                        );
+                        exhibitions.splice(index, 1);
+                        router.refresh();
                         toast("Izložba uspješno obrisana");
                       } else {
                         toast("Greška prilikom brisanja izložbe");
@@ -59,11 +67,7 @@ const Exhibitions = ({ t, loggedIn, exhibitions, setExhibitions }) => {
                 />
               )}
             </span>
-            <div
-              className={styles.izlozbaRight}
-              data-aos="fade-up"
-              data-aos-duration="800"
-            >
+            <div className={styles.izlozbaRight}>
               <span className={styles.izlozbaNaslov}>
                 {t("lang") === "sr" ? izlozba.title_sr : izlozba.title_en}
               </span>

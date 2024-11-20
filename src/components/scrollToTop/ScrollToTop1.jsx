@@ -1,3 +1,4 @@
+"use client";
 import React, { useState, useEffect } from "react";
 import { PiArrowUp } from "react-icons/pi";
 import styles from "./ScrollToTop1.module.css";
